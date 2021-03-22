@@ -1,4 +1,5 @@
 #BlueJ package file
+<<<<<<< HEAD
 dependency1.from=Equipa
 dependency1.to=Jogador
 dependency1.type=UsesDependency
@@ -14,6 +15,20 @@ package.editor.height=427
 package.editor.width=646
 package.editor.x=451
 package.editor.y=200
+=======
+editor.fx.0.height=991
+editor.fx.0.width=1920
+editor.fx.0.x=0
+editor.fx.0.y=27
+objectbench.height=92
+objectbench.width=776
+package.divider.horizontal=0.6
+package.divider.vertical=0.8012048192771084
+package.editor.height=392
+package.editor.width=670
+package.editor.x=679
+package.editor.y=360
+>>>>>>> 999457093e090b57a80e49d5c0eac9ea2369fc59
 package.frame.height=600
 package.frame.width=800
 package.numDependencies=1
@@ -21,15 +36,16 @@ package.numTargets=2
 package.showExtends=true
 package.showUses=true
 project.charset=UTF-8
-readme.height=60
+readme.height=58
 readme.name=@README
-readme.width=48
+readme.width=47
 readme.x=10
 readme.y=10
-target1.height=70
+target1.height=50
 target1.name=Jogador
 target1.showInterface=false
 target1.type=ClassTarget
+<<<<<<< HEAD
 target1.width=120
 target1.x=70
 target1.y=10
@@ -40,3 +56,8 @@ target2.type=ClassTarget
 target2.width=120
 target2.x=10
 target2.y=90
+=======
+target1.width=80
+target1.x=130
+target1.y=30
+>>>>>>> 999457093e090b57a80e49d5c0eac9ea2369fc59
