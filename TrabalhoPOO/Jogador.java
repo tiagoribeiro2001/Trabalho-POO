@@ -1,27 +1,47 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Jogador
 {
-    private int vel,resis,destr,impuls,cabec,remate,passe,numero;
+    private int vel,resis,destr,impuls,cabec,remate,passe,numero,elast;
     private ArrayList<String> historico;
     private String posicao,nome;
     
     public Jogador(){
-        this.vel = 0;
-        this.resis=0;
-        this.destr=0;
-        this.impuls=0;
-        this.cabec=0;
-        this.remate=0;
-        this.passe=0;
-        this.numero=0;
+        Random number = new Random();
+        this.vel = number.nextInt(100);
+        this.resis= number.nextInt(100);
+        this.destr=number.nextInt(100);
+        this.impuls=number.nextInt(100);
+        this.cabec=number.nextInt(100);
+        this.remate=number.nextInt(100);
+        this.passe=number.nextInt(100);
+        this.numero=number.nextInt(100);
+        this.elast=number.nextInt(100);
         this.historico = new ArrayList<String>();
         this.posicao = "";
         this.nome = "";
     }
+  
+    
+    public Jogador(String posicao){
+        Random number = new Random();
+        this.vel = number.nextInt(100);
+        this.resis= number.nextInt(100);
+        this.destr=number.nextInt(100);
+        this.impuls=number.nextInt(100);
+        this.cabec=number.nextInt(100);
+        this.remate=number.nextInt(100);
+        this.passe=number.nextInt(100);
+        this.numero=number.nextInt(100);
+        this.elast=number.nextInt(100);
+        this.historico = new ArrayList<String>();
+        this.posicao = posicao;
+        this.nome = "";
+    }    
     
     
-    public Jogador(int vel,int resis,int destr,int impuls,int cabec,int remate,int passe, int numero,ArrayList<String> historico,String posicao,String nome){
+    public Jogador(int vel,int resis,int destr,int impuls,int cabec,int remate,int passe, int numero,int elast,ArrayList<String> historico,String posicao,String nome){
         this.vel = vel;
         this.resis = resis;
         this.destr = destr;
@@ -32,6 +52,7 @@ public class Jogador
         this.numero = numero;
         this.historico = historico;
         this.posicao = posicao;
+        this.elast = elast;
         this.nome = nome;
     }
     
@@ -48,6 +69,7 @@ public class Jogador
         this.historico = jogador.getHistorico();
         this.posicao = jogador.getPosicao();
         this.nome = jogador.getNome();
+        this.elast = jogador.getElast();
     }
 
     public int getVelocidade() {
@@ -93,8 +115,14 @@ public class Jogador
     public String getNome() {
         return this.nome;
     }
+    
+    public int getElast(){
+        return this.elast;
+    }
 
-
+    public void setElast(int elast){
+        this.elast=elast;
+    }
     public void setVelocidade(int vel) {
         this.vel=vel;
     }
@@ -138,5 +166,29 @@ public class Jogador
     public void setNome(String nome) {
         this.nome=nome;
     }
-
+    public double getHabilidadeJogador() {
+        double habilidade=0.0;
+        if (this.posicao=="guarda-redes") {
+            habilidade = 0.45 * this.elast + 0.3 * this.impuls + 0.05 * this.vel + 0.05 * this.passe +
+            0.05 * this.remate + 0.05 * this.cabec + 0.05 * this.destr;
+        }
+        else if (this.posicao=="defesa") {
+            habilidade = 0.35 * this.impuls + 0.1 * this.vel + 0.1 * this.passe + 0.05 * this.remate +
+            0.35 * this.cabec + 0.05 * this.destr;
+        }
+        else if (this.posicao=="medio") {
+            habilidade = 0.05 * this.impuls + 0.1 * this.vel + 0.35 * this.passe + 0.15 * this.remate +
+            0.05 * this.cabec + 0.3 * this.destr;
+        }
+        else if (this.posicao=="avançado") {
+            habilidade = 0.1 * this.impuls + 0.15 * this.vel + 0.1 * this.passe + 0.3 * this.remate + 
+            0.15 * this.cabec + 0.2 * this.destr;
+        }
+        else if (this.posicao=="lateral") {
+            habilidade = 0.05 * this.impuls + 0.4 * this.vel + 0.2 * this.passe + 0.1 * this.remate +
+            0.05 * this.cabec + 0.2 * this.destr;
+        }
+        else return -1;
+        return habilidade;
+    }
 }
