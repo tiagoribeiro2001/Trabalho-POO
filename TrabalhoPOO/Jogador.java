@@ -7,7 +7,7 @@ public class Jogador
     private String posicao,nome;
     
     public Jogador(){
-        this.vel= 0;
+        this.vel = 0;
         this.resis=0;
         this.destr=0;
         this.impuls=0;
