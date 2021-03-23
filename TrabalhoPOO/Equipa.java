@@ -28,7 +28,7 @@ public class Equipa{
             this.plantel.add(new Jogador("avançado"));
         }
         Random nome = new Random();
-        this.nomeEquipa = "Equipa-" + nome.nextInt(1234);
+        this.nomeEquipa = "Equipa " + nome.nextInt(1000);
         this.titular= criarTitular();
         this.suplentes=criarSuplentes();
     }
