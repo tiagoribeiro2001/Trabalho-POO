@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Jogador{
-    private int velocidade, resistencia, destreza, impulsao, cabeça, remate, passe, numero, elasticidade;
+    private int velocidade, resistencia, destreza, impulsao, cabeca, remate, passe, numero, elasticidade, forca, criatividade, finalizacao, cruzamento;
     private ArrayList<String> historico;
-    private String posiçao, nome;
+    private String posicao, nome;
     
     //Metodos construtores
     
@@ -18,18 +18,22 @@ public class Jogador{
         this.resistencia = number.nextInt(100);
         this.destreza = number.nextInt(100);
         this.impulsao = number.nextInt(100);
-        this.cabeça = number.nextInt(100);
+        this.cabeca = number.nextInt(100);
         this.remate = number.nextInt(100);
         this.passe = number.nextInt(100);
         this.elasticidade = number.nextInt(100);
+        this.forca = number.nextInt(100);
+        this.criatividade = number.nextInt(100);
+        this.finalizacao = number.nextInt(100);
+        this.cruzamento = number.nextInt(100);
         this.numero = number.nextInt(98)+1;
         this.historico = new ArrayList<String>();
         switch (number.nextInt(4)){
-            case 0: this.posiçao = "Guarda-redes"; break;
-            case 1: this.posiçao = "Defesa"; break;
-            case 2: this.posiçao = "Medio"; break;
-            case 3: this.posiçao = "Avançado"; break;
-            case 4: this.posiçao = "Lateral"; break;
+            case 0: this.posicao = "Guarda-redes"; break;
+            case 1: this.posicao = "Defesa"; break;
+            case 2: this.posicao = "Medio"; break;
+            case 3: this.posicao = "Avancado"; break;
+            case 4: this.posicao = "Lateral"; break;
         }
         this.nome = "Jogador " + number.nextInt(1000);
     }
@@ -40,19 +44,23 @@ public class Jogador{
      * 
      * @param posiçao Posiçao a ser atribuida ao novo jogador.
      */
-    public Jogador(String posiçao){
+    public Jogador(String posicao){
         Random number = new Random();
         this.velocidade = number.nextInt(100);
         this.resistencia = number.nextInt(100);
         this.destreza = number.nextInt(100);
         this.impulsao = number.nextInt(100);
-        this.cabeça = number.nextInt(100);
+        this.cabeca = number.nextInt(100);
         this.remate = number.nextInt(100);
         this.passe = number.nextInt(100);
         this.elasticidade = number.nextInt(100);
-        this.numero = number.nextInt(100);
+        this.forca = number.nextInt(100);
+        this.criatividade = number.nextInt(100);
+        this.finalizacao = number.nextInt(100);
+        this.cruzamento = number.nextInt(100);
+        this.numero = number.nextInt(98)+1;
         this.historico = new ArrayList<String>();
-        this.posiçao = posiçao;
+        this.posicao = posicao;
         this.nome = "Jogador " + number.nextInt(1000);
     }    
     
@@ -67,24 +75,29 @@ public class Jogador{
      * @param cabec Cabeceamento a ser atribuido ao novo jogador.
      * @param remate Remate a ser atribuido ao novo jogador.
      * @param passe Passe a ser atribuido ao novo jogador.
-     * @param elast Elasticidade a ser atribuida ao novo jogador.
+     * @param elast Elasticidade a ser atribuida ao novo jogador (Guarda-redes).
      * @param numero Numero a ser atribuido ao novo jogador.
      * @param historico Historico a ser atribuido ao novo jogador.
      * @param posiçao Posiçao a ser atribuida ao novo jogador.
      * @param nome Nome a ser atribuido ao novo jogador.
      */
-    public Jogador(int vel, int resis, int destr, int impuls, int cabec, int remate, int passe, int elast, int numero, ArrayList<String> historico, String posiçao, String nome){
+    public Jogador(int vel, int resis, int destr, int impuls, int cabec, int remate, int passe, int elast, int forca,
+    int criat, int fin, int cruz,  int numero, ArrayList<String> historico, String posicao, String nome){
         this.velocidade = vel;
         this.resistencia = resis;
         this.destreza = destr;
         this.impulsao = impuls;
-        this.cabeça = cabec;
+        this.cabeca = cabec;
         this.remate = remate;
         this.passe = passe;
         this.elasticidade = elast;
+        this.forca = forca;
+        this.criatividade = criat;
+        this.finalizacao = fin;
+        this.cruzamento = cruz;
         this.numero = numero;
         this.historico = historico;
-        this.posiçao = posiçao;
+        this.posicao = posicao;
         this.nome = nome;
     }
     
@@ -99,13 +112,17 @@ public class Jogador{
         this.resistencia = jogador.getResistencia();
         this.destreza = jogador.getDestreza();
         this.impulsao = jogador.getImpulsao();
-        this.cabeça = jogador.getCabeça();
+        this.cabeca = jogador.getCabeca();
         this.remate = jogador.getRemate();
         this.passe = jogador.getPasse();
         this.elasticidade = jogador.getElasticidade();
+        this.forca = jogador.getForca();
+        this.criatividade = jogador.getCriatividade();
+        this.finalizacao = jogador.getFinalizacao();
+        this.cruzamento = jogador.getCruzamento();
         this.numero = jogador.getNumero();
         this.historico = jogador.getHistorico();
-        this.posiçao = jogador.getPosiçao();
+        this.posicao = jogador.getPosicao();
         this.nome = jogador.getNomeJogador();
     }
 
@@ -127,8 +144,8 @@ public class Jogador{
         return this.impulsao;
     }
 
-    public int getCabeça(){
-        return this.cabeça;
+    public int getCabeca(){
+        return this.cabeca;
     }
 
     public int getRemate(){
@@ -143,6 +160,22 @@ public class Jogador{
         return this.elasticidade;
     }
 
+    public int getForca(){
+        return this.forca;
+    }
+    
+    public int getCriatividade(){
+        return this.criatividade;
+    }
+    
+    public int getFinalizacao(){
+        return this.finalizacao;
+    }
+    
+    public int getCruzamento(){
+        return this.cruzamento;
+    }
+    
     public int getNumero(){
         return this.numero;
     }
@@ -151,8 +184,8 @@ public class Jogador{
         return this.historico;
     }
 
-    public String getPosiçao(){
-        return this.posiçao;
+    public String getPosicao(){
+        return this.posicao;
     }
 
     public String getNomeJogador(){
@@ -167,17 +200,17 @@ public class Jogador{
      */
     public double getHabilidadeJogador(){
         double habilidade = 0;
-        switch (this.posiçao){
+        switch (this.posicao){
             case ("Guarda-redes"): habilidade = 0.45 * this.elasticidade + 0.25 * this.impulsao + 0.05 * this.velocidade + 0.05 * this.passe +
-                0.05 * this.remate + 0.05 * this.cabeça + 0.05 * this.destreza + 0.05 * this.resistencia; break;
-            case ("Defesa"): habilidade = 0.3 * this.impulsao + 0.1 * this.velocidade + 0.1 * this.passe + 0.05 * this.remate +
-                0.3 * this.cabeça + 0.05 * this.destreza + 0.1 * this.resistencia; break;
-            case ("Medio"): habilidade = 0.05 * this.impulsao + 0.1 * this.velocidade + 0.3 * this.passe + 0.15 * this.remate +
-                0.05 * this.cabeça + 0.25 * this.destreza + 0.1 * this.resistencia; break;
-            case ("Avançado"): habilidade = 0.1 * this.impulsao + 0.15 * this.velocidade + 0.1 * this.passe + 0.3 * this.remate + 
-                0.15 * this.cabeça + 0.15 * this.destreza + 0.05 * this.resistencia; break;
-            case ("Lateral"): habilidade = 0.05 * this.impulsao + 0.35 * this.velocidade + 0.15 * this.passe + 0.1 * this.remate +
-                0.05 * this.cabeça + 0.2 * this.destreza + 0.1 * this.resistencia; break;
+                0.05 * this.remate + 0.05 * this.cabeca + 0.05 * this.destreza + 0.05 * this.resistencia; break;
+            case ("Defesa"): habilidade = 0.25 * this.forca + 0.25 * this.impulsao + 0.05 * this.velocidade + 0.05 * this.passe + 0.05 * this.remate +
+                0.25 * this.cabeca + 0.05 * this.destreza + 0.05 * this.resistencia; break;
+            case ("Medio"): habilidade = 0.2 * this.criatividade + 0.05 * this.impulsao + 0.05 * this.velocidade + 0.25 * this.passe + 0.10 * this.remate +
+                0.05 * this.cabeca + 0.2 * this.destreza + 0.1 * this.resistencia; break;
+            case ("Avancado"): habilidade = 0.2 * this.finalizacao + 0.1 * this.impulsao + 0.1 * this.velocidade + 0.1 * this.passe + 0.2 * this.remate + 
+                0.1 * this.cabeca + 0.15 * this.destreza + 0.05 * this.resistencia; break;
+            case ("Lateral"): habilidade = 0.2 * this.cruzamento + 0.05 * this.impulsao + 0.25 * this.velocidade + 0.1 * this.passe + 0.05 * this.remate +
+                0.05 * this.cabeca + 0.2 * this.destreza + 0.1 * this.resistencia; break;
             default: return -1;
         }
         return habilidade;
@@ -217,12 +250,12 @@ public class Jogador{
         this.impulsao = impuls;
     }
 
-    public void setCabeça(int cabec){
+    public void setCabeca(int cabec){
         if (cabec > 100)
             cabec = 100;
         else if (cabec < 0)
             cabec = 0;
-        this.cabeça = cabec;
+        this.cabeca = cabec;
     }
 
     public void setRemate(int remate){
@@ -249,6 +282,38 @@ public class Jogador{
         this.elasticidade = elast;
     }
 
+    public void setForca(int forca){
+        if (forca > 100)
+            forca = 100;
+        else if (forca < 0)
+            forca = 0;
+        this.forca = forca;
+    }
+    
+    public void setCriatividade(int criat){
+        if (criat > 100)
+            criat = 100;
+        else if (criat < 0)
+            criat = 0;
+        this.criatividade = criat;
+    }
+    
+    public void setFinalizacao(int fin){
+        if (fin > 100)
+            fin = 100;
+        else if (fin < 0)
+            fin = 0;
+        this.finalizacao = fin;
+    }
+    
+    public void setCruzamento(int cruz){
+        if (cruz > 100)
+            cruz = 100;
+        else if (cruz < 0)
+            cruz = 0;
+        this.cruzamento = cruz;
+    }
+    
     public void setNumero(int numero){
         if (numero > 99)
             numero = 99;
@@ -261,8 +326,8 @@ public class Jogador{
         this.historico = historico;
     }
 
-    public void setPosiçao(String posicao){
-        this.posiçao = posicao;
+    public void setPosicao(String posicao){
+        this.posicao = posicao;
     }
 
     public void setNomeJogador(String nome){
@@ -282,21 +347,27 @@ public class Jogador{
             return false;
         Jogador x = (Jogador) o;
         return (this.velocidade == x.getVelocidade() && this.resistencia == x.getResistencia() && this.destreza == x.getDestreza() && this.impulsao == x.getImpulsao() 
-               && this.cabeça == x.getCabeça() && this.remate == x.getRemate() && this.passe == x.getPasse() && this.elasticidade == x.getElasticidade()
-               && this.numero == x.getNumero() && this.historico.equals(x.getHistorico()) && this.posiçao.equals(x.getPosiçao()) && this.nome.equals(x.getNomeJogador()));
+               && this.cabeca == x.getCabeca() && this.remate == x.getRemate() && this.passe == x.getPasse() && this.elasticidade == x.getElasticidade()
+               && this.forca == x.getForca() && this.criatividade == x.getCriatividade() && this.finalizacao == x.getFinalizacao() && this.cruzamento == x.getCruzamento()
+               && this.numero == x.getNumero() && this.historico.equals(x.getHistorico()) && this.posicao.equals(x.getPosicao()) && this.nome.equals(x.getNomeJogador()));
     }
     
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("Nome do jogador: ").append(getNomeJogador());
         sb.append("\nNumero: ").append(getNumero());
-        sb.append("\nPosiçao: ").append(getPosiçao());
+        sb.append("\nPosicao: ").append(getPosicao());
         sb.append("\nHabilidade: ").append(getHabilidadeJogador());
         sb.append("\nVelocidade: ").append(getVelocidade()).append(" | Resistencia: ").append(getResistencia()).append(" | Destreza: ").append(getDestreza()).
-            append(" | Impulsao: ").append(getImpulsao()).append(" | Cabeceamento: ").append(getCabeça()).append(" | Remate: ").append(getRemate()).
+            append(" | Impulsao: ").append(getImpulsao()).append(" | Cabeceamento: ").append(getCabeca()).append(" | Remate: ").append(getRemate()).
             append(" | Passe: ").append(getPasse());
-        if (this.posiçao == "Guarda-redes")
-            sb.append(" | Elasticidade: ").append(getElasticidade());
+        switch (this.posicao){
+            case ("Guarda-redes"): sb.append(" | Elasticidade: ").append(getElasticidade()); break;
+            case ("Defesa"): sb.append(" | Forca: ").append(getForca()); break;
+            case ("Medio"): sb.append(" | Criatividade: ").append(getCriatividade()); break;
+            case ("Avancado"): sb.append(" | Finalizacao: ").append(getFinalizacao()); break;
+            case ("Lateral"): sb.append(" | Cruzamento: ").append(getCruzamento()); break;
+        }
         return sb.toString();
     }
 }

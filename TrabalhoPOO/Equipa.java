@@ -32,7 +32,7 @@ public class Equipa{
             this.plantel.add(new Jogador("Medio"));
         }
         for (int i=0;i<7;i++){
-            this.plantel.add(new Jogador("Avançado"));
+            this.plantel.add(new Jogador("Avancado"));
         }
         Random nome = new Random();
         this.nomeEquipa = "Equipa " + nome.nextInt(1000);
@@ -62,17 +62,12 @@ public class Equipa{
      */
     public void criarTitular (){  
         for (int i = 0; i < this.plantel.size(); i++){
-            switch(this.plantel.get(i).getPosiçao()){
-                case ("Guarda-redes"):
-                    addTitulares("Guarda-redes", 1, i); break;
-                case ("Defesa"):
-                    addTitulares("Defesa", 2, i); break;
-                case ("Lateral"):
-                    addTitulares("Lateral", 2, i); break;
-                case ("Medio"):
-                    addTitulares("Medio", 3, i); break;
-                case ("Avançado"):
-                    addTitulares("Avançado", 3, i); break;
+            switch(this.plantel.get(i).getPosicao()){
+                case ("Guarda-redes"): addTitulares("Guarda-redes", 1, i); break;
+                case ("Defesa"): addTitulares("Defesa", 2, i); break;
+                case ("Lateral"): addTitulares("Lateral", 2, i); break;
+                case ("Medio"): addTitulares("Medio", 3, i); break;
+                case ("Avancado"): addTitulares("Avancado", 3, i); break;
             }
         }
     }
@@ -80,56 +75,56 @@ public class Equipa{
     /**
      * Adiciona um jogador aos titulares se nao tiver nenhum jogador da sua posiçao ou se forem piores que ele.
      * 
-     * @param posiçao Posiçao a procurar.
+     * @param posicao Posicao a procurar.
      * @param quantos Quantos jogadores dessa posiçao devem estar nos titulares.
      * @param i Indice do array.
      */
-    public void addTitulares (String posiçao, int quantos, int i){
-        if (quantosPosTitular(posiçao) < quantos) 
+    public void addTitulares (String posicao, int quantos, int i){
+        if (quantosPosTitular(posicao) < quantos) 
                 this.titular.add(this.plantel.get(i));
-        else if (quantosPosTitular(posiçao) == quantos &&
-        this.plantel.get(i).getHabilidadeJogador() > this.titular.get(getPiorTitular(posiçao)).getHabilidadeJogador()) { 
-                this.titular.set(getPiorTitular(posiçao), this.plantel.get(i));
+        else if (quantosPosTitular(posicao) == quantos &&
+        this.plantel.get(i).getHabilidadeJogador() > this.titular.get(getPiorTitular(posicao)).getHabilidadeJogador()) { 
+                this.titular.set(getPiorTitular(posicao), this.plantel.get(i));
             }
     }
     
-        /**
+    /**
      * Indica quantos jogador de uma certa posicao existem nos titulares.
      * 
-     * @param posiçao Posiçao a procurar.
+     * @param posiçao Posicao a procurar.
      * @return quantos Quantos jogadores estao da posicao recebida nos titulares.
      */
     public int quantosPosTitular (String posiçao){
         int quantos = 0;
         for (int i = 0; i < this.titular.size(); i++){
-            if (this.titular.get(i).getPosiçao() == posiçao)
+            if (this.titular.get(i).getPosicao() == posicao)
                 quantos++;
         }
         return quantos;
     }
     
     /**
-     * Indica o indice em que esta inserido o pior jogador de uma dada posiçao nos titulares.
+     * Indica o indice em que esta inserido o pior jogador de uma dada posicao nos titulares.
      * 
-     * @param posiçao Posiçao a procurar.
+     * @param posicao Posiçao a procurar.
      * @return pior Indice do pior jogador nos titulares da posiçao recebida.
      */
-    public int getPiorTitular (String posiçao){
+    public int getPiorTitular (String posicao){
         int pior = -1;
         double habilidade = 101;
         for (int i = 0; i < this.titular.size(); i++) {
-            if (this.titular.get(i).getPosiçao() == posiçao && this.titular.get(i).getHabilidadeJogador() < habilidade){        
+            if (this.titular.get(i).getPosicao() == posicao && this.titular.get(i).getHabilidadeJogador() < habilidade){        
                 pior = i;
-                habilidade=this.titular.get(i).getHabilidadeJogador();
+                habilidade = this.titular.get(i).getHabilidadeJogador();
             }
         }
         return pior;
     }
     
     public void criarSuplentes (){
-        for (int i=0;i< this.plantel.size();i++){
-            if (!estaNosTitulares (this.plantel.get(i))) {
-                switch (this.plantel.get(i).getPosiçao()) {
+        for (int i = 0; i < this.plantel.size(); i++){
+            if (!estaNosTitulares(this.plantel.get(i))) {
+                switch (this.plantel.get(i).getPosicao()) {
                     case ("Guarda-redes"):
                         addSuplentes("Guarda-redes", 1, i); break;
                     case ("Defesa"):
@@ -138,31 +133,31 @@ public class Equipa{
                         addSuplentes("Lateral", 1, i); break;
                     case ("Medio"):
                         addSuplentes("Medio", 2, i); break;
-                    case ("Avançado"):
-                        addSuplentes("Avançado", 2, i); break;
+                    case ("Avancado"):
+                        addSuplentes("Avancado", 2, i); break;
                 }
             }
         }
     }
     
-    public void addSuplentes (String posiçao,int quantos, int i){
-        if (quantosPosSuplentes(posiçao) < quantos)
+    public void addSuplentes (String posicao,int quantos, int i){
+        if (quantosPosSuplentes(posicao) < quantos)
             this.suplentes.add(this.plantel.get(i));
-            else if (quantosPosSuplentes(posiçao) == quantos && 
-            this.plantel.get(i).getHabilidadeJogador() > this.titular.get(getPiorSuplentes(posiçao)).getHabilidadeJogador()) {
-                this.suplentes.set(getPiorSuplentes(posiçao),this.plantel.get(i));
+            else if (quantosPosSuplentes(posicao) == quantos && 
+            this.plantel.get(i).getHabilidadeJogador() > this.titular.get(getPiorSuplentes(posicao)).getHabilidadeJogador()) {
+                this.suplentes.set(getPiorSuplentes(posicao),this.plantel.get(i));
             }
         }
 
     public boolean estaNosTitulares (Jogador jogador){
-        for (int i=0;i<this.titular.size();i++){
+        for (int i = 0; i < this.titular.size(); i++){
             if (this.titular.get(i).equals(jogador)) return true;
         }
         return false;
     }
     
     public boolean estaNosSuplentes (Jogador jogador){
-        for (int i=0;i<this.suplentes.size();i++){
+        for (int i = 0; i < this.suplentes.size(); i++){
             if (this.suplentes.get(i).equals(jogador)) return true;
         }
         return false;
@@ -170,9 +165,9 @@ public class Equipa{
         
 
     public int quantosPosSuplentes(String posicao) {
-        int quantos=0;
-        for (int i=0;i<this.suplentes.size();i++) {
-            if (this.suplentes.get(i).getPosiçao() == posicao)  quantos++;
+        int quantos = 0;
+        for (int i = 0; i<this.suplentes.size(); i++) {
+            if (this.suplentes.get(i).getPosicao() == posicao)  quantos++;
         }
         return quantos;
     }
@@ -181,45 +176,45 @@ public class Equipa{
         int pior = -1;
         double habilidade = 101;
         for (int i = 0; i < this.suplentes.size(); i++) {
-            if (this.suplentes.get(i).getPosiçao() == posiçao && this.suplentes.get(i).getHabilidadeJogador() < habilidade){        
+            if (this.suplentes.get(i).getPosicao() == posicao && this.suplentes.get(i).getHabilidadeJogador() < habilidade){        
                 pior = i;
-                habilidade=this.suplentes.get(i).getHabilidadeJogador();
+                habilidade = this.suplentes.get(i).getHabilidadeJogador();
             }
         }
         return pior;
     }
     
     public int getIndiceTitular (Jogador jogador) {
-        for (int i=0;i<this.titular.size();i++){
+        for (int i = 0 ; i < this.titular.size(); i++){
             if (this.titular.get(i).equals(jogador)) return i;
         }
         return -1;
-        
     }
     
     public int getIndiceSuplentes (Jogador jogador) {
-        for (int i=0;i<this.titular.size();i++){
+        for (int i = 0; i < this.titular.size(); i++){
             if (this.suplentes.get(i).equals(jogador)) return i;
         }
         return -1;
-        
     }
+    
     public void gestaoEquipa (Jogador j1,Jogador j2) {
         if
     }
     
     public void substituicaoIG(Jogador j1,Jogador j2) {
         if (estaNosTitulares(j1) && estaNosSuplentes(j2) ) {
-            trocaJog(getIndiceTitular(j1),getIndiceSuplentes(j2));
+            trocaJog(getIndiceTitular(j1), getIndiceSuplentes(j2));
         }
         else if (estaNosTitulares(j2) && estaNosSuplentes(j1)) {
-            trocaJog(getIndiceTitular(j2),getIndiceSuplentes(j1));
+            trocaJog(getIndiceTitular(j2), getIndiceSuplentes(j1));
         }
     }
-    public void trocaJog(int j1,int j2) {
+    
+    public void trocaJog(int j1, int j2) {
         Jogador novo = this.titular.get(j1);
-        this.titular.set(j1,this.suplentes.get(j2));
-        this.suplentes.set(j2,novo);
+        this.titular.set(j1, this.suplentes.get(j2));
+        this.suplentes.set(j2, novo);
     }
 }
 
