@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Guarda_redes
+comment0.text=\n\ Write\ a\ description\ of\ class\ Guarda_redes\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Guarda_redes()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Guarda_redes\n
+comment2.params=
+comment2.target=int\ getElasticidade()
+comment3.params=
+comment3.target=int\ getHabilidadeJogador()
+comment4.params=elast
+comment4.target=void\ setElasticidade(int)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=Lateral
+comment0.text=\n\ Write\ a\ description\ of\ class\ Lateral\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=Lateral()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Lateral\n
+comment2.params=
+comment2.target=int\ getCruzamento()
+comment3.params=
+comment3.target=int\ getHabilidadeJogador()
+comment4.params=cruz
+comment4.target=void\ setCruzamento(int)
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6
