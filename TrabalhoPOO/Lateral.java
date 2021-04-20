@@ -1,5 +1,5 @@
 import java.util.Random;
-
+    
 /**
  * Write a description of class Lateral here.
  *
@@ -8,26 +8,36 @@ import java.util.Random;
  */
 public class Lateral extends Jogador{
     private int cruzamento;
-
+    
     /**
      * Constructor for objects of class Lateral
      */
-    public Lateral()
-    {
-        super("Lateral");
+    public Lateral(){
+        super();
         Random number = new Random();
         this.cruzamento = number.nextInt(100);
         super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Lateral");
     }
-
+    
+    public Lateral(String nome){
+        super();
+        Random number = new Random();
+        this.cruzamento = number.nextInt(100);
+        super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Lateral");
+        super.setNomeJogador(nome);
+    }
+    
     public int getCruzamento(){
         return this.cruzamento;
     }
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.2 * this.cruzamento + 0.05 * super.getImpulsao() + 0.25 * super.getVelocidade() + 0.1 * super.getPasse() +
-                     0.05 * super.getRemate() + 0.05 * super.getCabeca() + 0.2 * super.getDestreza() + 0.1 * super.getResistencia();
+        habilidade = 0.2 * this.cruzamento + 0.05 * super.getEstatisticas().getImpulsao() + 0.25 * super.getEstatisticas().getVelocidade() +
+                     0.1 * super.getEstatisticas().getPasse() + 0.05 * super.getEstatisticas().getRemate() + 0.05 * super.getEstatisticas().getCabeca() +
+                     0.2 * super.getEstatisticas().getDestreza() + 0.1 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
     

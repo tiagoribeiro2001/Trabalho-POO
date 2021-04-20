@@ -13,10 +13,20 @@ public class Medio extends Jogador{
      * Constructor for objects of class Medio
      */
     public Medio(){
-        super("Medio");
+        super();
         Random number = new Random();
         this.criatividade = number.nextInt(100);
         super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Medio");
+    }
+    
+    public Medio(String nome){
+        super();
+        Random number = new Random();
+        this.criatividade = number.nextInt(100);
+        super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Medio");
+        super.setNomeJogador(nome);
     }
     
     public int getCriatividade(){
@@ -25,8 +35,9 @@ public class Medio extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.2 * this.criatividade + 0.05 * super.getImpulsao() + 0.05 * super.getVelocidade() + 0.25 * super.getPasse() +
-                     0.10 * super.getRemate() + 0.05 * super.getCabeca() + 0.2 * super.getDestreza() + 0.1 * super.getResistencia();
+        habilidade = 0.2 * this.criatividade + 0.05 * super.getEstatisticas().getImpulsao() + 0.05 * super.getEstatisticas().getVelocidade() +
+                     0.25 * super.getEstatisticas().getPasse() + 0.10 * super.getEstatisticas().getRemate() + 0.05 * super.getEstatisticas().getCabeca() +
+                     0.2 * super.getEstatisticas().getDestreza() + 0.1 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
     

@@ -13,10 +13,20 @@ public class Defesa extends Jogador{
      * Constructor for objects of class Defesa
      */
     public Defesa(){
-        super("Defesa");
+        super();
         Random number = new Random();
         this.forca = number.nextInt(100);
         super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Defesa");
+    }
+    
+    public Defesa(String nome){
+        super();
+        Random number = new Random();
+        this.forca = number.nextInt(100);
+        super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Defesa");
+        super.setNomeJogador(nome);
     }
     
     public int getForca(){
@@ -25,8 +35,9 @@ public class Defesa extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.25 * this.forca + 0.25 * super.getImpulsao() + 0.05 * super.getVelocidade() + 0.05 * super.getPasse() +
-                     0.05 * super.getRemate() + 0.25 * super.getCabeca() + 0.05 * super.getDestreza() + 0.05 * super.getResistencia();
+        habilidade = 0.25 * this.forca + 0.25 * super.getEstatisticas().getImpulsao() + 0.05 * super.getEstatisticas().getVelocidade() +
+                     0.05 * super.getEstatisticas().getPasse() + 0.05 * super.getEstatisticas().getRemate() + 0.25 * super.getEstatisticas().getCabeca() +
+                     0.05 * super.getEstatisticas().getDestreza() + 0.05 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
     

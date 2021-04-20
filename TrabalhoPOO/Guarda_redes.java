@@ -13,10 +13,20 @@ public class Guarda_redes extends Jogador{
      * Constructor for objects of class Guarda_redes
      */
     public Guarda_redes(){
-        super("Guarda-redes");
+        super();
         Random number = new Random();
         this.elasticidade = number.nextInt(100);
         super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Guarda-redes");
+    }
+    
+    public Guarda_redes(String nome){
+        super();
+        Random number = new Random();
+        this.elasticidade = number.nextInt(100);
+        super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Guarda-redes");
+        super.setNomeJogador(nome);
     }
     
     public int getElasticidade(){
@@ -25,8 +35,9 @@ public class Guarda_redes extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.45 * this.elasticidade + 0.25 * super.getImpulsao() + 0.05 * super.getVelocidade() + 0.05 * super.getPasse() +
-                     0.05 * super.getRemate() + 0.05 * super.getCabeca() + 0.05 * super.getDestreza() + 0.05 * super.getResistencia();
+        habilidade = 0.45 * this.elasticidade + 0.25 * super.getEstatisticas().getImpulsao() + 0.05 * super.getEstatisticas().getVelocidade() +
+                     0.05 * super.getEstatisticas().getPasse() + 0.05 * super.getEstatisticas().getRemate() + 0.05 * super.getEstatisticas().getCabeca() +
+                     0.05 * super.getEstatisticas().getDestreza() + 0.05 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
     
@@ -44,5 +55,4 @@ public class Guarda_redes extends Jogador{
         sb.append(" | Elasticidade: ").append(getElasticidade()).append("\n---------------------------");
         return sb.toString();
     }
-    
 }

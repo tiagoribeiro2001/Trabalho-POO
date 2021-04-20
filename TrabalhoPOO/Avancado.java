@@ -13,10 +13,20 @@ public class Avancado extends Jogador{
      * Constructor for objects of class Avancado
      */
     public Avancado(){
-        super("Avancado");
+        super();
         Random number = new Random();
         this.finalizacao = number.nextInt(100);
         super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Avancado");
+    }
+    
+    public Avancado(String nome){
+        super();
+        Random number = new Random();
+        this.finalizacao = number.nextInt(100);
+        super.setHabilidade(getHabilidadeJogador());
+        super.setPosicao("Avancado");
+        super.setNomeJogador(nome);
     }
     
     public int getFinalizacao(){
@@ -25,8 +35,9 @@ public class Avancado extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.2 * this.finalizacao + 0.1 * super.getImpulsao() + 0.1 * super.getVelocidade() + 0.1 * super.getPasse() +
-                     0.2 * super.getRemate() + 0.1 * super.getCabeca() + 0.15 * super.getDestreza() + 0.05 * super.getResistencia();
+        habilidade = 0.2 * this.finalizacao + 0.1 * super.getEstatisticas().getImpulsao() + 0.1 * super.getEstatisticas().getVelocidade() +
+                     0.1 * super.getEstatisticas().getPasse() + 0.2 * super.getEstatisticas().getRemate() + 0.1 * super.getEstatisticas().getCabeca() +
+                     0.15 * super.getEstatisticas().getDestreza() + 0.05 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
     
