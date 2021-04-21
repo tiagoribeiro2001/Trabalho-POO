@@ -3,7 +3,7 @@ public class TesteJogador{
         Jogador joga1 = new Guarda_redes("Joao Vitor");
         Jogador joga2 = new Defesa("Ruben Dias");
         Jogador joga3 = new Medio("Tiago Ribeiro");
-        Jogador joga4 = new Avancado("Chico New");
+        Jogador joga4 = new Avancado("Francisco Novo");
         Jogador joga5 = new Lateral("Joao Cancelo");
         System.out.println(joga1.toString());
         System.out.println(joga2.toString());
