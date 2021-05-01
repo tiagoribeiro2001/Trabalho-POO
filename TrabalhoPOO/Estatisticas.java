@@ -1,18 +1,16 @@
 import java.util.Random;
 
 /**
- * Write a description of class Estatisticas here.
+ * Classe Estatisticas
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Grupo 27
  */
 public class Estatisticas
 {
     private int velocidade, resistencia, destreza, impulsao, cabeca, remate, passe;
 
-    /**
-     * Constructor for objects of class Estatisticas
-     */
+    // Construtores
+    
     public Estatisticas(){
         Random number = new Random();
         this.velocidade = number.nextInt(100);
@@ -150,5 +148,9 @@ public class Estatisticas
             append(" | Impulsao: ").append(getImpulsao()).append(" | Cabeceamento: ").append(getCabeca()).append(" | Remate: ").append(getRemate()).
             append(" | Passe: ").append(getPasse());
         return sb.toString();
+    }
+    
+    public Estatisticas clone(){
+        return new Estatisticas(this);   
     }
 }

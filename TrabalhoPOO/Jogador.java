@@ -1,13 +1,18 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Classe abstracta Jogador
+ *
+ * @author Grupo 27
+ */
 public abstract class Jogador{
     private Estatisticas estatisticas;
     private int numero, habilidade;
     private ArrayList<String> historico;
     private String posicao, nome;
     
-    //Metodos construtores
+    // Construtores
     
     /**
      * Construtor sem argumentos. 
@@ -55,7 +60,7 @@ public abstract class Jogador{
         this.nome = jogador.getNomeJogador();
     }
 
-    //Getters
+    // Getters
     
     public Estatisticas getEstatisticas(){
         return this.estatisticas;
@@ -81,7 +86,7 @@ public abstract class Jogador{
         return this.nome;
     }
     
-    //Setters
+    // Setters
     
     public void setEstatisticas(Estatisticas stats){
         this.estatisticas = stats;
@@ -140,4 +145,6 @@ public abstract class Jogador{
         sb.append(estatisticas.toString());
         return sb.toString();
     }
+    
+    public abstract Jogador clone();
 }

@@ -1,33 +1,40 @@
 import java.util.Random;
 
 /**
- * Write a description of class Avancado here.
+ * Classe Avancado
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Grupo 27
  */
 public class Avancado extends Jogador{
     private int finalizacao;
 
-    /**
-     * Constructor for objects of class Avancado
-     */
+    // Construtores
+    
     public Avancado(){
         super();
         Random number = new Random();
         this.finalizacao = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Avancado");
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Avancado");
     }
     
     public Avancado(String nome){
         super();
         Random number = new Random();
         this.finalizacao = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Avancado");
-        super.setNomeJogador(nome);
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Avancado");
+        setNomeJogador(nome);
     }
+    
+    public Avancado(Avancado av){
+        super(av);
+        this.finalizacao = av.getFinalizacao();
+        setHabilidade(av.getHabilidadeJogador());
+        setPosicao(av.getPosicao());
+    }
+    
+    // Getters
     
     public int getFinalizacao(){
         return this.finalizacao;
@@ -40,6 +47,8 @@ public class Avancado extends Jogador{
                      0.15 * super.getEstatisticas().getDestreza() + 0.05 * super.getEstatisticas().getResistencia();
         return (int) habilidade;
     }
+    
+    // Setters
     
     public void setFinalizacao(int fin){
         if (fin > 100)
@@ -54,5 +63,9 @@ public class Avancado extends Jogador{
         sb.append(super.toString());
         sb.append(" | Finalizacao: ").append(getFinalizacao()).append("\n---------------------------");
         return sb.toString();
+    }
+    
+    public Avancado clone(){
+           return new Avancado(this);
     }
 }

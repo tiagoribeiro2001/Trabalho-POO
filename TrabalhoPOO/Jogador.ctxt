@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Jogador
+comment0.text=\n\ Classe\ abstracta\ Jogador\n\n\ @author\ Grupo\ 27\n
 comment1.params=
 comment1.target=Jogador()
 comment1.text=\n\ Construtor\ sem\ argumentos.\ \n\ Cria\ um\ Jogador\ com\ atributos\ com\ um\ numero\ randomizado\ de\ 0\ a\ 100,\ um\ numero\ randomizado\ de\ 1\ a\ 99,\ um\ nome\ randomizado,\ uma\ posi\u00E7ao\ randomizada\ e\ um\ historico\ vazio.\ \n
@@ -20,6 +21,8 @@ comment16.target=boolean\ equals(java.lang.Object)
 comment16.text=\n\ Indica\ se\ o\ jogador\ recebido\ e\ igual\ a\ este.\n\ \n\ @param\ o\ Jogador\ a\ ser\ comparado.\n\ @return\ True\ se\ forem\ iguais,\ False\ caso\ contrario.\n
 comment17.params=
 comment17.target=java.lang.String\ toString()
+comment18.params=
+comment18.target=Jogador\ clone()
 comment2.params=stats\ numero\ historico\ posicao\ nome
 comment2.target=Jogador(Estatisticas,\ int,\ java.util.ArrayList,\ java.lang.String,\ java.lang.String)
 comment2.text=\n\ Construtor\ com\ argumentos.\ \n\ Cria\ um\ Jogador\ com\ a\ informa\u00E7ao\ recebida\ nos\ argumentos.\n\ \n\ @param\ stats\ Estatisticas\ do\ jogador\n\ @param\ numero\ Numero\ a\ ser\ atribuido\ ao\ novo\ jogador.\n\ @param\ historico\ Historico\ a\ ser\ atribuido\ ao\ novo\ jogador.\n\ @param\ posi\u00E7ao\ Posi\u00E7ao\ a\ ser\ atribuida\ ao\ novo\ jogador.\n\ @param\ nome\ Nome\ a\ ser\ atribuido\ ao\ novo\ jogador.\n
@@ -38,4 +41,4 @@ comment8.params=
 comment8.target=java.lang.String\ getPosicao()
 comment9.params=
 comment9.target=java.lang.String\ getNomeJogador()
-numComments=18
+numComments=19

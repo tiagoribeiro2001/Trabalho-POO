@@ -1,33 +1,40 @@
 import java.util.Random;
 
 /**
- * Write a description of class Defesa here.
+ * Classe Defesa
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Grupo 27
  */
 public class Defesa extends Jogador{
     private int forca;
 
-    /**
-     * Constructor for objects of class Defesa
-     */
+    // Construtores
+    
     public Defesa(){
         super();
         Random number = new Random();
         this.forca = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Defesa");
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Defesa");
     }
     
     public Defesa(String nome){
         super();
         Random number = new Random();
         this.forca = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Defesa");
-        super.setNomeJogador(nome);
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Defesa");
+        setNomeJogador(nome);
     }
+    
+    public Defesa(Defesa df){
+        super(df);
+        this.forca = df.getForca();
+        setHabilidade(df.getHabilidadeJogador());
+        setPosicao(df.getPosicao());
+    }
+    
+    // Getters
     
     public int getForca(){
         return this.forca;
@@ -35,11 +42,18 @@ public class Defesa extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.25 * this.forca + 0.25 * super.getEstatisticas().getImpulsao() + 0.05 * super.getEstatisticas().getVelocidade() +
-                     0.05 * super.getEstatisticas().getPasse() + 0.05 * super.getEstatisticas().getRemate() + 0.25 * super.getEstatisticas().getCabeca() +
-                     0.05 * super.getEstatisticas().getDestreza() + 0.05 * super.getEstatisticas().getResistencia();
+        habilidade = 0.25 * this.forca 
+                     + 0.25 * getEstatisticas().getImpulsao() 
+                     + 0.05 * getEstatisticas().getVelocidade() 
+                     + 0.05 * getEstatisticas().getPasse() 
+                     + 0.05 * getEstatisticas().getRemate() 
+                     + 0.25 * getEstatisticas().getCabeca() 
+                     + 0.05 * getEstatisticas().getDestreza() 
+                     + 0.05 * getEstatisticas().getResistencia();
         return (int) habilidade;
     }
+    
+    // Setters
     
     public void setForca(int forca){
         if (forca > 100)
@@ -49,10 +63,16 @@ public class Defesa extends Jogador{
         this.forca = forca;
     }
     
+    
+    
     public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append(super.toString());
         sb.append(" | Forca: ").append(getForca()).append("\n---------------------------");
         return sb.toString();
+    }
+    
+    public Defesa clone(){
+           return new Defesa(this);
     }
 }

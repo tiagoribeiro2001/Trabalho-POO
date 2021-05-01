@@ -1,33 +1,40 @@
 import java.util.Random;
     
 /**
- * Write a description of class Lateral here.
+ * Classe Lateral
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Grupo 27
  */
 public class Lateral extends Jogador{
     private int cruzamento;
     
-    /**
-     * Constructor for objects of class Lateral
-     */
+    // Construtores
+    
     public Lateral(){
         super();
         Random number = new Random();
         this.cruzamento = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Lateral");
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Lateral");
     }
     
     public Lateral(String nome){
         super();
         Random number = new Random();
         this.cruzamento = number.nextInt(100);
-        super.setHabilidade(getHabilidadeJogador());
-        super.setPosicao("Lateral");
-        super.setNomeJogador(nome);
+        setHabilidade(getHabilidadeJogador());
+        setPosicao("Lateral");
+        setNomeJogador(nome);
     }
+    
+    public Lateral(Lateral lt){
+        super(lt);
+        this.cruzamento = lt.getCruzamento();
+        setHabilidade(lt.getHabilidadeJogador());
+        setPosicao(lt.getPosicao());
+    }
+    
+    // Getters
     
     public int getCruzamento(){
         return this.cruzamento;
@@ -35,11 +42,18 @@ public class Lateral extends Jogador{
     
     public int getHabilidadeJogador(){
         double habilidade = 0;
-        habilidade = 0.2 * this.cruzamento + 0.05 * super.getEstatisticas().getImpulsao() + 0.25 * super.getEstatisticas().getVelocidade() +
-                     0.1 * super.getEstatisticas().getPasse() + 0.05 * super.getEstatisticas().getRemate() + 0.05 * super.getEstatisticas().getCabeca() +
-                     0.2 * super.getEstatisticas().getDestreza() + 0.1 * super.getEstatisticas().getResistencia();
+        habilidade = 0.2 * this.cruzamento 
+                     + 0.05 * getEstatisticas().getImpulsao() 
+                     + 0.25 * getEstatisticas().getVelocidade() 
+                     + 0.10 * getEstatisticas().getPasse() 
+                     + 0.05 * getEstatisticas().getRemate() 
+                     + 0.05 * getEstatisticas().getCabeca() 
+                     + 0.20 * getEstatisticas().getDestreza() 
+                     + 0.10 * getEstatisticas().getResistencia();
         return (int) habilidade;
     }
+    
+    // Setters
     
     public void setCruzamento(int cruz){
         if (cruz > 100)
@@ -54,5 +68,9 @@ public class Lateral extends Jogador{
         sb.append(super.toString());
         sb.append(" | Cruzamento: ").append(getCruzamento()).append("\n---------------------------");
         return sb.toString();
+    }
+    
+    public Lateral clone(){
+           return new Lateral(this);
     }
 }
